@@ -48,7 +48,8 @@ def runscript():
     strength = True
     material2 = Material(mat2, domain, cube_grid2, rho0, T0, v0x, v0y, strength)
     # <--------------------------------------------------------------------------------------------------------
-    outpath = r'/Users/MilaFitzgerald/Desktop/OUTPUTS'
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    outpath = os.path.join(current_directory, "OUTPUTS")   
     folder_name = '2D_Taylor_test'
     folder_path = os.path.join(outpath, folder_name)
     runtime = 1.0e-6
@@ -56,7 +57,7 @@ def runscript():
     output_dt = runtime / output_steps
     #
     if not os.path.exists(folder_path):
-        os.mkdir(folder_path)
+        os.makedirs(folder_path)
     #
     runscript_contents = ['xmin = {}'.format(xmin), 'xmax = {}'.format(xmax), \
                           'ymin = {}'.format(ymin), 'ymax = {}'.format(ymax), \
